@@ -1,0 +1,84 @@
+import * as React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Cabecalho from '../components/Cabecalho';
+
+import TelaCampainha from './TelaCampainha';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+
+const Stack = createStackNavigator();
+
+export default function TelaInicial() {
+  return (
+    <NavigationContainer independent={true}>
+      <Stack.Navigator>
+        <Stack.Screen name="Inicio" component={Inicio} />
+        <Stack.Screen name="TelaCampainha" component={TelaCampainha} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+function Inicio({ navigation }) {
+  return (
+    <View>
+      <Cabecalho />
+      <TouchableOpacity
+        style={[editar.botao, { backgroundColor: '#DC143C' }]}
+        onPress={() => {
+          this.IrParaTelaCampainha('#DC143C');
+        }}>
+        <Text style={editar.textoBotao}>Equipe 1</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={[editar.botao, { backgroundColor: '#EE82EE' }]}
+        onPress={() => {
+          this.IrParaTelaCampainha('#EE82EE');
+        }}>
+        <Text style={editar.textoBotao}>Equipe 2</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={[editar.botao, { backgroundColor: '#7B68EE' }]}
+        onPress={() => {
+          this.IrParaTelaCampainha('#7B68EE');
+        }}>
+        <Text style={editar.textoBotao}>Equipe 3</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={[editar.botao, { backgroundColor: '#7CFC00' }]}
+        onPress={() => {
+          this.IrParaTelaCampainha('#7CFC00');
+        }}>
+        <Text style={editar.textoBotao}>Equipe 4</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+const editar = StyleSheet.create({
+  botao: {
+    justifyContent: 'center', //Alinhamento do conteúdo que está dentro do botão
+
+    alignSelf: 'center', //Alinhamento do próprio botão
+
+    borderWidth: 2, //Largura da borda
+
+    borderRadius: 20, //Arredondamento da bora
+
+    marginTop: 22, //Margem acima do botão
+
+    width: 150, //Largura
+
+    height: 50, //Altura
+  },
+
+  textoBotao: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 25,
+    fontFamily: 'NerkoOne_400Regular',
+  },
+});
